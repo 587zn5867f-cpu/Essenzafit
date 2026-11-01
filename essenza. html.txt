@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Essenza Fit | Vista sua essência</title>
+<style>
+:root{--forest:#243c32;--leaf:#536b50;--lime:#d9dfbd;--cream:#f5f1e8;--paper:#fffdf8;--ink:#222820;--muted:#77796e;--clay:#bd7658;--line:#e5dfd2;--serif:Georgia,'Times New Roman',serif;--sans:Arial,Helvetica,sans-serif}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,calc(100% - 44px));margin:auto}
+
+header{height:76px;background:rgba(245,241,232,.96);display:flex;align-items:center;position:sticky;top:0;z-index:20;border-bottom:1px solid var(--line);backdrop-filter:blur(12px)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:0 22px}
+.brand{font:bold 29px var(--serif);letter-spacing:.06em;color:var(--forest)}
+.brand small{display:block;font:10px var(--sans);letter-spacing:.28em;text-transform:uppercase;color:var(--clay);margin-top:-7px}
+.navlinks{display:flex;gap:30px;font-size:13px;letter-spacing:.06em;text-transform:uppercase;list-style:none}
+.navlinks a:hover{color:var(--clay)}
+.nav-cta{background:var(--forest);color:white;padding:12px 19px;border-radius:2px;font-size:12px;text-transform:uppercase}
+
+.hero{min-height:610px;background:var(--forest);color:#fff;display:flex;align-items:center;position:relative;overflow:hidden;padding:0 22px}
+.hero-inner{position:relative;z-index:1;max-width:710px;padding:95px 0}
+.eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:.24em;color:var(--clay);font-weight:bold}
+h1{font:normal clamp(54px,8vw,100px)/.98 var(--serif);letter-spacing:-.045em;margin:24px 0}
+h1 em{color:var(--lime);font-style:normal}
+.hero p{max-width:470px;color:#e1e5d9;font-size:16px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:15px 22px;background:var(--clay);color:white;border:1px solid var(--clay);font-size:12px;text-transform:uppercase;letter-spacing:.12em;cursor:pointer;border-radius:2px}
+.btn:hover{background:#a96348;border-color:#a96348}
+.btn-ghost{background:transparent;border-color:rgba(255,255,255,.55)}
+.hero-note{position:absolute;right:20px;bottom:35px;color:#d5dccb;font:italic 17px var(--serif);writing-mode:vertical-rl}
+
+.story{padding:100px 22px;background:var(--paper)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;max-width:1100px;margin:0 auto}
+.story-mark{background:var(--lime);display:flex;align-items:center;justify-content:center;padding:0;border-radius:4px;min-height:400px}
+.story-mark img{max-width:100%;width:100%;height:auto;display:block;margin:0;padding:0}
+.kicker{font-size:11px;text-transform:uppercase;letter-spacing:.24em;color:var(--clay);font-weight:bold;margin-bottom:10px}
+.story h2{font:normal clamp(32px,5vw,48px)/1.1 var(--serif);color:var(--forest);margin-bottom:24px}
+.story-copy p{color:#5f6359;font-size:16px;margin-bottom:18px;line-height:1.7}
+.values{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
+.values span{border:1px solid var(--line);padding:8px 16px;border-radius:30px;color:var(--forest);font-size:12px;text-transform:uppercase}
+
+.collection{padding:80px 22px;background:var(--cream)}
+.collection-head{text-align:center;max-width:650px;margin:0 auto 40px}
+.section-title{font:normal clamp(32px,5vw,42px)/1.1 var(--serif);color:var(--forest);margin-bottom:12px}
+.collection-head p{color:var(--muted);font-size:15px}
+.searchbox{display:flex;align-items:center;gap:10px;max-width:500px;margin:0 auto 24px;background:var(--paper);border:1px solid var(--line);padding:8px 16px;border-radius:4px}
+.searchbox input{border:0;outline:0;background:transparent;flex:1;padding:8px;color:var(--ink);font-size:15px}
+.searchbox button{border:0;background:var(--forest);color:white;padding:10px 16px;border-radius:2px;font-size:12px;cursor:pointer}
+.filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.filter{border:1px solid var(--line);background:transparent;color:var(--forest);padding:10px 18px;border-radius:30px;font-size:12px;text-transform:uppercase;cursor:pointer}
+.filter.active,.filter:hover{background:var(--forest);border-color:var(--forest);color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;max-width:700px;margin:0 auto}
+.product{background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden;transition:transform .2s}
+.product:hover{transform:translateY(-3px)}
+.photo-placeholder{aspect-ratio:4/5;background:#e9e5d9;display:flex;align-items:center;justify-content:center;color:var(--forest)}
+.ph-inner{text-align:center;padding:30px}
+.ph-inner strong{display:block;font:italic 24px var(--serif);margin-bottom:8px}
+.ph-inner small{font-size:11px;text-transform:uppercase;color:var(--muted)}
+.product-info{padding:20px}
+.tag{color:var(--clay);font-size:10px;text-transform:uppercase;letter-spacing:.15em}
+.product h3{font:normal 22px var(--serif);color:var(--forest);margin:8px 0 10px}
+.product p{font-size:14px;color:var(--muted);margin-bottom:16px}
+.product .btn{width:100%}
+.empty{grid-column:1/-1;text-align:center;color:var(--muted);padding:40px;display:none}
+
+footer{background:var(--forest);color:#e8ebdf;padding:40px 22px;text-align:center}
+.footer-brand{font:28px var(--serif);letter-spacing:.06em;margin-bottom:8px}
+footer p{font-size:14px;color:#c5cdbd}
+
+@media(max-width:768px){
+  .story-grid{grid-template-columns:1fr}
+  .navlinks{display:none}
+  .hero-note{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#inicio">essenza<small>vista sua essência</small></a>
+    <nav>
+      <ul class="navlinks">
+        <li><a href="#historia">Nossa história</a></li>
+        <li><a href="#pecas">Peças</a></li>
+      </ul>
+    </nav>
+    <a class="nav-cta" href="#pecas">Descobrir ↗</a>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="eyebrow">Uma forma de vestir quem você é</div>
+      <h1>Vista sua<br><em>essência.</em></h1>
+      <p>Peças escolhidas para acompanhar seus movimentos, seu ritmo e tudo aquilo que faz você ser única.</p>
+      <div class="hero-actions">
+        <a class="btn" href="#pecas">Conheça nossas peças</a>
+        <a class="btn btn-ghost" href="#historia">Conheça a Essenza</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-note">conforto · autenticidade · liberdade</div>
+</section>
+
+<section class="story" id="historia">
+  <div class="wrap">
+    <div class="story-grid">
+      <div class="story-mark">
+        <!-- 📸 COLOQUE SUA IMAGEM AQUI: salve a imagem como logo.png na mesma pasta do arquivo -->
+        <img src="logo.png" alt="Essenza Fit — O melhor para você">
+      </div>
+      <div class="story-copy">
+        <div class="kicker">Por trás da marca</div>
+        <h2>Mais do que vestir.<br>É viver com consciência.</h2>
+        <p>A <strong>Essenza Fit</strong> nasceu com um propósito simples: mostrar que moda e fitness podem ser acessíveis, bonitos e responsáveis ao mesmo tempo. Acreditamos que cuidar de si mesmo não precisa custar caro — e nem custar ao planeta.</p>
+        <p>Somos uma marca <strong>sustentável e ética</strong>. Não fazemos testes em animais, escolhemos materiais com consciência e buscamos sempre reduzir nosso impacto no meio ambiente. Nosso objetivo é oferecer preços justos, para que mais pessoas — de todas as idades e realidades — possam vestir qualidade sem pesar no bolso.</p>
+        <p>Porque sentir-se bem, cuidar do corpo e respeitar a natureza é para todos. Essa é a nossa essência.</p>
+        <div class="values">
+          <span>Sustentabilidade</span>
+          <span>Preços Justos</span>
+          <span>Ética</span>
+          <span>Livre de Crueldade</span>
+          <span>Acessibilidade</span>
+          <span>Bem-estar</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="collection" id="pecas">
+  <div class="wrap">
+    <div class="collection-head">
+      <div class="kicker">Escolha o que combina com você</div>
+      <h2 class="section-title">Conheça nossas peças.</h2>
+      <p>Explore a coleção Essenza Fit. Escolha uma categoria abaixo.</p>
+    </div>
+    
+    <div class="filters" id="filters">
+      <button class="filter active" data-filter="todas">Todas</button>
+      <button class="filter" data-filter="macacoes">Macacões</button>
+      <button class="filter" data-filter="blusas">Blusas</button>
+      <button class="filter" data-filter="shorts">Shorts</button>
+    </div>
+    
+    <div class="grid" id="productGrid">
+      <article class="product" data-category="macacoes">
+        <div class="photo-placeholder">
+          <div class="ph-inner">
+            <strong>Foto em breve</strong>
+            <small>Macacões</small>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="tag">Macacões</span>
+          <h3>Macacão de Linha Fina</h3>
+          <p>Conforto e elegância para o seu dia a dia.</p>
+          <a class="btn" href="https://wa.me/5531991263372?text=Oi%2C%20quero%20saber%20mais%20sobre%20os%20macac%C3%B5es" target="_blank">Tenho interesse</a>
+        </div>
+      </article>
+      
+      <article class="product" data-category="blusas">
+        <div class="photo-placeholder">
+          <div class="ph-inner">
+            <strong>Foto em breve</strong>
+            <small>Blusas</small>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="tag">Blusas</span>
+          <h3>Blusa Térmica</h3>
+          <p>Confortável e versátil para todos os momentos.</p>
+          <a class="btn" href="https://wa.me/5531991263372?text=Oi%2C%20quero%20saber%20mais%20sobre%20as%20blusas" target="_blank">Tenho interesse</a>
+        </div>
+      </article>
+      
+      <article class="product" data-category="shorts">
+        <div class="photo-placeholder">
+          <div class="ph-inner">
+            <strong>Foto em breve</strong>
+            <small>Shorts</small>
+          </div>
+        </div>
+        <div class="product-info">
+          <span class="tag">Shorts</span>
+          <h3>Shorts de Academia</h3>
+          <p>Movimento e liberdade em cada passo.</p>
+          <a class="btn" href="https://wa.me/5531991263372?text=Oi%2C%20quero%20saber%20mais%20sobre%20os%20shorts" target="_blank">Tenho interesse</a>
+        </div>
+      </article>
+      
+      <div class="empty" id="emptyState">Nenhuma peça encontrada.</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-brand">essenza.</div>
+    <p>Vista sua essência. Viva seu estilo.</p>
+  </div>
+</footer>
+
+<script>
+const products = document.querySelectorAll('.product');
+const buttons = document.querySelectorAll('.filter');
+const emptyState = document.getElementById('emptyState');
+
+buttons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    buttons.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const category = btn.dataset.filter;
+    let visible = 0;
+    
+    products.forEach(p => {
+      if(category === 'todas' || p.dataset.category === category) {
+        p.style.display = 'block';
+        visible++;
+      } else {
+        p.style.display = 'none';
+      }
+    });
+    
+    emptyState.style.display = visible === 0 ? 'block' : 'none';
+  });
+});
+</script>
+
+</body>
+</html>
